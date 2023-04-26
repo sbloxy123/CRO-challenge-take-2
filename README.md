@@ -1,12 +1,18 @@
+# Updated changes since meeting
+
+- implemented
+
 # CRO Developer - Coding Challenge
 
 ## Get Started
+
 - Download this repository
 - Open it in your code editor
 - Run `npm i`
 - Run `npm start`
 
 This will run a local server on port 7000 and surface your Javascript/CSS file in /public endpoint:
+
 - http://localhost:7000/public/js/script.js
 - http://localhost:7000/public/css/styles.css
 

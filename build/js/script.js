@@ -9,13 +9,16 @@ function waitForElm(selector) {
     if (document.querySelector(selector)) {
       return resolve(document.querySelector(selector));
     }
+    // setup the observer
     const observer = new MutationObserver(() => {
       if (document.querySelector(selector)) {
         resolve(document.querySelector(selector));
         observer.disconnect();
       }
     });
-    observer.observe(document.body, {
+    // observe the page for the change(creation)
+    const container = document.documentElement || document.body;
+    observer.observe(container, {
       childList: true,
       subtree: true,
     });
@@ -23,27 +26,32 @@ function waitForElm(selector) {
 }
 
 function createCta() {
+  // getting the max quantity permitted
   const amazonsDropdown = document.querySelector("#mobileQuantityDropDown");
   const totalOptionsAvailable =
     amazonsDropdown.querySelectorAll("option").length;
-  const CTAPlacement = document.querySelector("#a-page");
-  const amazonButton = document.querySelector("#add-to-cart-button");
+  // selecting where to place CTA
   const CTA = document.createElement("div");
-  CTA.innerHTML = `
-    <form id="myCTA-form">
-      <input id="CTA-quantity" type="number" value="1" min="1" max="${totalOptionsAvailable}" />
-      <button id="CTA-button" type="submit">Add To Basket</button>
-    </form>
-  `;
+  // building the CTA:
+  const ctaForm = document.createElement("div");
+  ctaForm.innerHTML = `
+  <form id="myCTA-form">
+    <input id="CTA-quantity" type="number" value="1" min="1" max="${totalOptionsAvailable}" />
+    <button id="CTA-button" type="submit">Add To Basket</button>
+  </form>
+`;
+  CTA.append(ctaForm);
   CTA.classList.add("show");
-  CTAPlacement.insertAdjacentElement("afterend", CTA);
 
-  addCTA(amazonButton, CTA);
+  addCtaToPage(CTA);
 }
 
 //==== adding CTA to page & setting its visibility ====//
 
-function addCTA(amazonButton, CTA) {
+function addCtaToPage(CTA) {
+  const CTAPlacement = document.querySelector("#a-page");
+  CTAPlacement.insertAdjacentElement("afterend", CTA);
+
   let options = {
     root: null, //null = defaults to the users viewport
     rootMargin: "0px",
@@ -62,6 +70,7 @@ function addCTA(amazonButton, CTA) {
   // setup the observer:
   const observer = new IntersectionObserver(callback, options);
   // observe amazon's 'Add to Basket' button
+  const amazonButton = document.querySelector("#add-to-cart-button");
   observer.observe(amazonButton);
 
   ctaFunctionality(amazonButton);
