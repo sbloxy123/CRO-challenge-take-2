@@ -1,6 +1,6 @@
 # Updates/changes since interview
 
-- implemented IntersectionObserver() to improve performance on CTA visibility vs user viewport
+- implemented IntersectionObserver() to improve performance on CTA visibility when positioned within the user viewport
 - added more comments to code & split into functions for better readability and testing performance
 - implemented MutationObserver for updating CTA when user updates Amazon's quantity field
 - implemented MutationObserver for adding the CTA to the page on page load to improve UI/UX performance
