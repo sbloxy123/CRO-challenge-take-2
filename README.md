@@ -1,10 +1,9 @@
-# Updates/changes since interview
+## My approach:
 
-- implemented IntersectionObserver() to improve performance on CTA visibility when positioned within the user viewport
-- added more comments to code & split into functions for better readability and testing performance
-- implemented MutationObserver for updating CTA when user updates Amazon's quantity field
-- implemented MutationObserver for adding the CTA to the page on page load to improve UI/UX performance
-- limited quantity of items user can add when using the CTA
+- Setup the listener for when the page loads so that my code would run after the DOM has loaded.
+- Implemented IntersectionObserver() to setup the placement and visibility of the CTA (call-to-action)
+- Implemented MutationObserver for adding the CTA to the page on page load
+- Limited quantity of items user can add through the CTA (to meet Amazon's product availability/allowance)
 
 # CRO Developer - Coding Challenge
 
@@ -20,15 +19,18 @@ This will run a local server on port 7000 and surface your Javascript/CSS file i
 - http://localhost:7000/public/js/script.js
 - http://localhost:7000/public/css/styles.css
 
-Do all your development work (javascript and SCSS) in the folder "Build".
-
-Also set up the extension to inject your Javascript and CSS file. See instructions here: https://docs.google.com/presentation/d/1Kt4g4HGdOCbDjfyLB1y2AFtfpNGwjKCCR33y9dCvSj8/edit#slide=id.g1e04036d6cb_3_3449
-
-If you have any questions please contact Nuno Bento - [nuno.bento@biglight.co.uk](mailto:nuno.bento@biglight.co.uk?subject=Github%20CRO%20Coding%20Challenge)
 
 ## Brief
 
-https://docs.google.com/presentation/d/1Kt4g4HGdOCbDjfyLB1y2AFtfpNGwjKCCR33y9dCvSj8/
+# Install this Chrome extension: https://chrome.google.com/webstore/detail/code-injector/edkcmfocepnifkbnbkmlcmegedeikdeb 
+- Click on the extension, click “Add Rule”, and add the following configuration:
+- Add the URL Pattern: https://www.amazon.co.uk/dp/B09B8YWXDF* (including the asterisk in the end)
+- Click in “Files”
+- Add the file URL to your css file and javascript file
+- Uncheck “On page load”
+- Click “Save”
+
+Go to the URL where the challenge runs and reload the page. Your code should run now.
 
 ## Page Url
 
